@@ -98,7 +98,7 @@ for ($i = 0; $i < $length-1; $i++) {
 echo $numberarray[$length-1] . " = " . $answer . "<br><br>";
 //have a "test" button to submit. Version 2.0 - automatic correct detection
 echo "</h1>";
-echo "<a href='http://numbers.kylescheer.com/game.php?difficulty=" .$difficulty . "'><input type='button' value='Get New Equation'></a>";
+echo "<a href='/game.php?difficulty=" .$difficulty . "'><input type='button' value='Get New Equation'></a>";
 echo "<input type='submit'>  ";
 echo "<input type='button' onClick='getAnswer()' value='Get answer'/>";
 echo "</form>";
