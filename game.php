@@ -127,7 +127,7 @@ $printequationstring = str_replace("**","^",$equationstring);
 }
 else {}
 ?>
-<br><br><br><br><br>
+<br>
 <div id='getanswer' style='display:none'>
 <?php include 'getanswerpemdas.php';?>
 </div>
