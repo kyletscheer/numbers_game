@@ -1,0 +1,28 @@
+[01-Sep-2020 13:18:23 CST6CDT] PHP Parse error:  syntax error, unexpected '{' in /home/kylesche/public_html/numbers/financials.php on line 17
+[01-Sep-2020 13:18:34 CST6CDT] PHP Parse error:  syntax error, unexpected '}', expecting ',' or ';' in /home/kylesche/public_html/numbers/financials.php on line 25
+[01-Sep-2020 13:18:35 CST6CDT] PHP Parse error:  syntax error, unexpected '}', expecting ',' or ';' in /home/kylesche/public_html/numbers/financials.php on line 25
+[09-Sep-2020 13:22:43 CST6CDT] PHP Parse error:  syntax error, unexpected ';' in /home/kylesche/public_html/numbers/game.php on line 18
+[09-Sep-2020 13:46:17 CST6CDT] PHP Parse error:  syntax error, unexpected end of file in /home/kylesche/public_html/numbers/game.php(39) : eval()'d code on line 1
+[09-Sep-2020 13:46:36 CST6CDT] PHP Parse error:  syntax error, unexpected end of file, expecting ';' in /home/kylesche/public_html/numbers/game.php(39) : eval()'d code on line 1
+[09-Sep-2020 13:47:07 CST6CDT] PHP Parse error:  syntax error, unexpected end of file, expecting ';' in /home/kylesche/public_html/numbers/game.php(39) : eval()'d code on line 1
+[09-Sep-2020 13:50:41 CST6CDT] PHP Parse error:  syntax error, unexpected end of file in /home/kylesche/public_html/numbers/game.php on line 51
+[09-Sep-2020 14:49:43 CST6CDT] PHP Parse error:  syntax error, unexpected ')' in /home/kylesche/public_html/numbers/numbers5.php(80) : eval()'d code on line 1
+[09-Sep-2020 14:51:34 CST6CDT] PHP Parse error:  syntax error, unexpected ')' in /home/kylesche/public_html/numbers/numbers5.php(80) : eval()'d code on line 1
+[09-Sep-2020 14:52:24 CST6CDT] PHP Parse error:  syntax error, unexpected ')' in /home/kylesche/public_html/numbers/numbers5.php(81) : eval()'d code on line 1
+[17-Sep-2020 16:37:30 CST6CDT] PHP Parse error:  syntax error, unexpected '$oneresultpemdasnumbersarray' (T_VARIABLE), expecting ',' or ';' in /home/kylesche/public_html/numbers/game.php on line 14
+[17-Sep-2020 17:07:10 CST6CDT] PHP Fatal error:  Uncaught Error: [] operator not supported for strings in /home/kylesche/public_html/numbers/game.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/kylesche/public_html/numbers/game.php on line 15
+[19-Sep-2020 22:26:43 CST6CDT] PHP Parse error:  syntax error, unexpected ';' in /home/kylesche/public_html/numbers/game.php on line 3
+[23-Sep-2020 12:23:35 CST6CDT] PHP Parse error:  syntax error, unexpected ';' in /home/kylesche/public_html/numbers/game.php on line 43
+[23-Sep-2020 12:23:37 CST6CDT] PHP Parse error:  syntax error, unexpected ';' in /home/kylesche/public_html/numbers/game.php on line 43
+[23-Sep-2020 12:24:06 CST6CDT] PHP Parse error:  syntax error, unexpected ';' in /home/kylesche/public_html/numbers/game.php on line 43
+[23-Sep-2020 12:24:16 CST6CDT] PHP Parse error:  syntax error, unexpected ';' in /home/kylesche/public_html/numbers/game.php on line 43
+[23-Sep-2020 12:24:26 CST6CDT] PHP Parse error:  syntax error, unexpected ';' in /home/kylesche/public_html/numbers/game.php on line 35
+[23-Sep-2020 12:24:52 CST6CDT] PHP Parse error:  syntax error, unexpected ';' in /home/kylesche/public_html/numbers/game.php on line 35
+[23-Sep-2020 13:12:46 CST6CDT] PHP Parse error:  syntax error, unexpected ')' in /home/kylesche/public_html/numbers/testing.php on line 13
+[23-Sep-2020 13:16:17 CST6CDT] PHP Parse error:  syntax error, unexpected ')' in /home/kylesche/public_html/numbers/testing.php on line 33
+[12-Oct-2020 16:47:31 CST6CDT] PHP Parse error:  syntax error, unexpected '{' in /home/kylesche/public_html/numbers/game.php on line 46
+[12-Oct-2020 16:48:11 CST6CDT] PHP Parse error:  syntax error, unexpected '{' in /home/kylesche/public_html/numbers/game.php on line 46
+[12-Oct-2020 16:48:13 CST6CDT] PHP Parse error:  syntax error, unexpected '{' in /home/kylesche/public_html/numbers/game.php on line 46
