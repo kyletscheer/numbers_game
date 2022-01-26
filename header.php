@@ -30,6 +30,14 @@ $(document).ready(function() {
 	html, body {
 		height: 100%;
 	}
+	@font-face {
+  font-family: 'Calculator';
+  src: url('Calculator.eot'); /* IE9 Compat Modes */
+  src: url('Calculator.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('Calculator.woff') format('woff'), /* Modern Browsers */
+       url('Calculator.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('Calculator.svg#svgFontName') format('svg'); /* Legacy iOS */
+}
 	</style>
 
 </head>
