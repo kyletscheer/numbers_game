@@ -29,6 +29,7 @@ $(document).ready(function() {
 	<style>
 	html, body {
 		height: 100%;
+		font-family: Calculator;
 	}
 	@font-face {
   font-family: 'Calculator';
