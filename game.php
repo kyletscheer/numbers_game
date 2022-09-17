@@ -1,4 +1,7 @@
 <?php include "header.php";?>
+<?php
+error_reporting( E_ALL ^ ( E_NOTICE | E_WARNING | E_DEPRECATED ) );
+?>
 <body>
 <link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet'>
 <script>
@@ -30,19 +33,25 @@ select {
 Difficulty:
 <select id='difficulty' name='difficulty' onchange='if(this.value != 0) { this.form.submit(); }'>
 <option>Easy</option>
-<option selected="selected">Medium</option>
+<option>Medium</option>
 <option>Hard</option>
 <option>Expert</option>
 </select>
 </form>
 <script type="text/javascript">
-  document.getElementById('difficulty').value = "<?php echo $_POST['difficulty'];?>";
+  document.getElementById('difficulty').value = "<?php if($_GET['difficulty']){echo $_GET['difficulty'];}else{echo $_POST['difficulty'];}?>";
 </script>
 <?php
 //Version 2.0: change difficulty
 //get a random number and answer from an array/database/query
 if (!empty($_POST["symbol0"])){
 	$inputnumber = $_POST["existingnumber"];
+	if ($_GET['difficulty']){
+		$difficulty = $_GET['difficulty'];
+	}
+	else {
+		$difficulty = $_POST['difficulty'];
+	}
 }
 else {
 	$oneresultpemdasnumbersarray = array();
@@ -53,7 +62,7 @@ else {
 		fclose($file);  
 	}
 	else{}
-	if (!empty($_GET['difficulty'])){
+	if ($_GET['difficulty']){
 		$difficulty = $_GET['difficulty'];
 	}
 	else {
@@ -89,7 +98,7 @@ for ($i = 0; $i < $length; $i++){
 	$numberarray[$i] = substr($number, $i, 1);
 }
 //loop those digits so they echo on screen in order. Create dropdown between each for number symbols. Echo "=answer"
-echo "<form action='game.php' method='post'>";
+echo "<form action='game.php?difficulty=" . $difficulty . "' method='post'>";
 echo "<input type='hidden' id='existingnumber' name='existingnumber' value='" . $inputnumber . "'></input>";
 echo "<h1>";
 for ($i = 0; $i < $length-1; $i++) {
@@ -98,7 +107,7 @@ for ($i = 0; $i < $length-1; $i++) {
 echo $numberarray[$length-1] . " = " . $answer . "<br><br>";
 //have a "test" button to submit. Version 2.0 - automatic correct detection
 echo "</h1>";
-echo "<a href='/game.php?difficulty=" .$difficulty . "'><input type='button' value='Get New Equation'></a>";
+echo "<a href='game.php?difficulty=" . $difficulty . "'><input type='button' value='Get New Equation'></a>";
 echo "<input type='submit'>  ";
 echo "<input type='button' onClick='getAnswer()' value='Get answer'/>";
 echo "</form>";

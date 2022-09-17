@@ -26,6 +26,10 @@ $(document).ready(function() {
 	} );
 } );
 </script>
+<?php
+error_reporting(E_ALL ^ E_DEPRECATED);
+error_reporting(E_ALL ^ E_WARNING);
+?>
 	<style>
 	html, body {
 		height: 100%;

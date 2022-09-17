@@ -47,11 +47,21 @@ $equationarray[1][0] = "jesus";
 array_push($finalarray[1], ($numberarray[0]+$numberarray[1]));
 array_push($finalarray[1], ($numberarray[0]-$numberarray[1]));
 array_push($finalarray[1], ($numberarray[0]*$numberarray[1]));
+if($numberarray[1]==0){
+array_push($finalarray[1], $numberarray[0]);
+}
+else{
 array_push($finalarray[1], ($numberarray[0]/$numberarray[1]));
+}
 array_push($equationarray[1], ($numberarray[0] . "+" . $numberarray[1]));
 array_push($equationarray[1], ($numberarray[0] . "-" . $numberarray[1]));
 array_push($equationarray[1], ($numberarray[0] . "*" . $numberarray[1]));
+if($numberarray[1]==0){
+array_push($equationarray[1], "divide by zero error");
+}
+else{
 array_push($equationarray[1], ($numberarray[0] . "/" . $numberarray[1]));
+}
 
 	for ($i = 1; $i < ($length-1); $i++){ /* go through the number of digits */
 		for ($j=1; $j < (sizeof($finalarray[$i])); $j++){ /* go through results */
@@ -59,12 +69,23 @@ array_push($equationarray[1], ($numberarray[0] . "/" . $numberarray[1]));
 			array_push($finalarray[$i+1], ($finalarray[$i][$j] + $numberarray[$i+1]));
 			array_push($finalarray[$i+1], ($finalarray[$i][$j] - $numberarray[$i+1]));
 			array_push($finalarray[$i+1], ($finalarray[$i][$j] * $numberarray[$i+1]));
+			$tempplace = $numberarray[$i+1];
+			if($tempplace==0){
+			array_push($finalarray[$i+1], (0));
+			}
+			else{
 			array_push($finalarray[$i+1], ($finalarray[$i][$j] / $numberarray[$i+1]));
+			}
 			$equationarray[$i+1][0] = "jesus";
 			array_push($equationarray[$i+1], ($equationarray[$i][$j] . "+" . $numberarray[$i+1]));
 			array_push($equationarray[$i+1], ($equationarray[$i][$j] . "-" . $numberarray[$i+1]));
 			array_push($equationarray[$i+1], ($equationarray[$i][$j] . "*" . $numberarray[$i+1]));
+			if($tempplace==0){
+			array_push($equationarray[$i+1], "divide by zero error");
+			}
+			else {
 			array_push($equationarray[$i+1], ($equationarray[$i][$j] . "/" . $numberarray[$i+1]));
+			}
 		}
 	}
 echo "<h4>Total number of combinations = " . (sizeof($finalarray[$length-1])-1) . "</h4>";
