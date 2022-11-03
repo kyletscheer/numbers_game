@@ -45,7 +45,12 @@ $equationarray[1][0] = "jesus";
 array_push($finalarray[1], ($numberarray[0]+$numberarray[1]));
 array_push($finalarray[1], ($numberarray[0]-$numberarray[1]));
 array_push($finalarray[1], ($numberarray[0]*$numberarray[1]));
-array_push($finalarray[1], ($numberarray[0]/$numberarray[1]));
+if ($numberarray[1]==0){
+	array_push($finalarray[1], (0));
+}
+else {
+	array_push($finalarray[1], ($numberarray[0]/$numberarray[1]));
+}
 array_push($equationarray[1], ($numberarray[0] . "+" . $numberarray[1]));
 array_push($equationarray[1], ($numberarray[0] . "-" . $numberarray[1]));
 array_push($equationarray[1], ($numberarray[0] . "*" . $numberarray[1]));
@@ -57,7 +62,12 @@ array_push($equationarray[1], ($numberarray[0] . "/" . $numberarray[1]));
 			array_push($finalarray[$i+1], ($finalarray[$i][$j] + $numberarray[$i+1]));
 			array_push($finalarray[$i+1], ($finalarray[$i][$j] - $numberarray[$i+1]));
 			array_push($finalarray[$i+1], ($finalarray[$i][$j] * $numberarray[$i+1]));
+			if ($numberarray[$i+1]==0){
+			array_push($finalarray[$i+1], $finalarray[$i][$j]);
+			}
+			else {
 			array_push($finalarray[$i+1], ($finalarray[$i][$j] / $numberarray[$i+1]));
+			}
 		}
 	
 	}
@@ -86,7 +96,7 @@ echo "<h1>Goal: " . $goal . "</h1>";
 	<tbody>
 		<?php
 			for ($i=1; $i < sizeof($optionsarray); $i++){
-					echo "<tr><td><a href='/numbers3.php?sent=" . $optionsarray[$i] . "&sentgoal=" . $goal . "' target='_blank'>" . $optionsarray[$i] . "</a></td><td>" . $yesnumberarray[$i] . "</td><td>" . $combinationsarray[$i] . "</td></tr>";
+					echo "<tr><td><a href='numbers3.php?sent=" . $optionsarray[$i] . "&sentgoal=" . $goal . "' target='_blank'>" . $optionsarray[$i] . "</a></td><td>" . $yesnumberarray[$i] . "</td><td>" . $combinationsarray[$i] . "</td></tr>";
 				}
 		?>
 	</tbody>
