@@ -1,0 +1,212 @@
+<html>
+  <head>
+    <title>Single Number - Equation Checker</title>
+    <style>
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      .content {
+        padding: 100px;
+        text-align: center;
+      }
+    </style>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap5.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.datatables.net/buttons/2.4.0/css/buttons.bootstrap5.min.css"
+      rel="stylesheet"
+    />
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.0/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.0/js/buttons.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.0/js/buttons.html5.min.js"></script>
+    <script>
+      function generateEquations(numbers) {
+        const equations = [];
+
+        function generate(currentEquation, currentIndex) {
+          if (currentIndex === numbers.length - 1) {
+            equations.push(currentEquation);
+          } else {
+            const currentDigit = parseInt(numbers.charAt(currentIndex + 1));
+
+            generate(currentEquation + "+" + currentDigit, currentIndex + 1);
+            generate(currentEquation + "-" + currentDigit, currentIndex + 1);
+            generate(currentEquation + "*" + currentDigit, currentIndex + 1);
+            generate(currentEquation + "/" + currentDigit, currentIndex + 1);
+          }
+        }
+
+        generate(numbers.charAt(0), 0);
+        return equations;
+      }
+
+      function checkEquation() {
+        const number = parseInt(document.getElementById("number").value);
+        const digit = number % 10;
+        const numbers = Math.floor(number / 10).toString();
+        const equations = generateEquations(numbers);
+        const tableBody = document.getElementById("equationTableBody");
+        let successCount = 0;
+        const tableRows = [];
+        // Destroy the existing DataTables table, if initialized
+        if ($.fn.dataTable.isDataTable("#numbertable")) {
+          $("#numbertable").DataTable().destroy();
+        }
+        tableBody.innerHTML = "";
+
+        equations.forEach((equation) => {
+          const result = eval(equation);
+          const status = result === digit ? "success" : "failure";
+
+          const row = document.createElement("tr");
+
+          const equationCell = document.createElement("td");
+          equationCell.textContent = equation;
+          row.appendChild(equationCell);
+
+          const resultCell = document.createElement("td");
+          resultCell.textContent = result;
+          row.appendChild(resultCell);
+
+          const statusCell = document.createElement("td");
+          statusCell.textContent = status;
+          row.appendChild(statusCell);
+
+          tableRows.push(row);
+
+          if (status === "success") {
+            successCount++;
+          }
+        });
+
+        tableRows.forEach((row) => {
+          tableBody.appendChild(row);
+        });
+
+        const successCountElement = document.getElementById("successCount");
+        successCountElement.textContent = successCount.toString();
+
+        // Initialize DataTables after the table has been populated
+        if ($.fn.dataTable.isDataTable("#numbertable")) {
+          $("#numbertable").DataTable().destroy();
+        }
+
+        $("#numbertable").DataTable({
+          dom: "Bfrtip",
+          buttons: ["copyHtml5", "excelHtml5", "csvHtml5"],
+          order: [[2, "desc"]],
+        });
+      }
+    </script>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">The Numbers Game</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarResponsive"
+          aria-controls="navbarResponsive"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown1"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+                >Find Numbers</a
+              >
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                <a class="dropdown-item" href="singlenumber.html"
+                  >Single Number</a
+                >
+                <a class="dropdown-item" href="singlegoal.html"
+                  >Single Number with Goal</a
+                >
+                <a class="dropdown-item" href="manynumbers.html"
+                  >Many Numbers</a
+                >
+                <a class="dropdown-item" href="manygoal.html"
+                  >Many Numbers with Goals</a
+                >
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="game.php">Numbers Game</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="content">
+      <h1>Single Number Equation Checker</h1>
+      <form>
+        <label for="number">Put number here:</label>
+        <input type="number" id="number" name="number" />
+        <input
+          type="submit"
+          value="Check"
+          onclick="event.preventDefault(); checkEquation();"
+          class="btn btn-primary"
+        />
+      </form>
+      <p>Number of successes: <span id="successCount"></span></p>
+
+      <table id="numbertable" class="table table-striped">
+        <thead>
+          <tr>
+            <th>Equation</th>
+            <th>Result</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="equationTableBody"></tbody>
+      </table>
+    </div>
+    <footer class="bg-dark fixed-bottom p-2">
+      <div class="container">
+        <p class="m-0 text-center text-white">
+          &copy;
+          <a href="http://www.kylescheer.com" target="_blank">Kyle Scheer</a>
+          <button
+            type="button"
+            class="btn btn-outline-primary"
+            style="margin-left: 20px"
+          >
+            <a
+              href="https://github.com/kyletscheer/numbers_game"
+              target="_blank"
+              >View Code</a
+            >
+          </button>
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

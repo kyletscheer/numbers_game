@@ -1,0 +1,188 @@
+<html>
+  <head>
+    <title>Make the Math Work</title>
+    <style>
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      .content {
+        padding: 100px;
+        text-align: center;
+      }
+    </style>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">The Numbers Game</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarResponsive"
+          aria-controls="navbarResponsive"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown1"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+                >Find Numbers</a
+              >
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                <a class="dropdown-item" href="singlenumber.html"
+                  >Single Number</a
+                >
+                <a class="dropdown-item" href="singlegoal.html"
+                  >Single Number with Goal</a
+                >
+                <a class="dropdown-item" href="manynumbers.html"
+                  >Many Numbers</a
+                >
+                <a class="dropdown-item" href="manygoal.html"
+                  >Many Numbers with Goals</a
+                >
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="game.php">Numbers Game</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="content">
+      <div class="jumbotron">
+        <div class="container">
+          <h1 class="display-3">Make the Math Work</h1>
+          <p>
+            This site gives you a chance to see if a series of numbers, such as
+            the time (12:35) can become an equation (1*2+3=5). Why you may ask?
+            I'll let you know as soon as I find out the answer myself.
+          </p>
+          <!--<p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>-->
+          <p>
+            <i
+              >Note: This can't see equations combining numbers such as 1234
+              working out via 12/3=4 or 3811 being 3+8=11 (for now).</i
+            >
+          </p>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card" style="width: 18rem">
+              <div class="card-body">
+                <h5 class="card-title">Single Number</h5>
+                <p class="card-text">
+                  Put in a number. See if the digits in the number can make an
+                  equation that equals the number's final digit.
+                </p>
+                <a href="singlenumber.html" class="btn btn-primary"
+                  >See It In Action</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card" style="width: 18rem">
+              <div class="card-body">
+                <h5 class="card-title">Many Numbers</h5>
+                <p class="card-text">
+                  Put in a starting and ending number. It will check the # of
+                  successful equations for each number in the sequence
+                </p>
+                <a href="manynumbers.html" class="btn btn-primary"
+                  >Take Me There</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card" style="width: 18rem">
+              <div class="card-body">
+                <h5 class="card-title">Single Number with Goal</h5>
+                <p class="card-text">
+                  Don't want the digits in a number to add up to the final
+                  digit? Now you can set what you want the equation to add up
+                  to.
+                </p>
+                <a href="singlegoal.html" class="btn btn-primary"
+                  >Check it Out</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card" style="width: 18rem">
+              <div class="card-body">
+                <h5 class="card-title">Bulk Numbers with Goal</h5>
+                <p class="card-text">
+                  Put in a starting number, ending number, and goal. It will
+                  check the # of successful equations to reach that goal every
+                  number in the sequence.
+                </p>
+                <a href="manygoal.html" class="btn btn-primary"
+                  >See the Magic</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card" style="width: 18rem">
+              <div class="card-body">
+                <h5 class="card-title">Numbers Game</h5>
+                <p class="card-text">
+                  I'll give you a series of numbers, and you figure out the
+                  equation to get there.
+                </p>
+                <a href="game.php" class="btn btn-primary">Get Ready to Play</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr />
+      </div>
+    </div>
+    <footer class="bg-dark fixed-bottom p-2">
+      <div class="container">
+        <p class="m-0 text-center text-white">
+          &copy;
+          <a href="http://www.kylescheer.com" target="_blank">Kyle Scheer</a>
+          <button
+            type="button"
+            class="btn btn-outline-primary"
+            style="margin-left: 20px"
+          >
+            <a
+              href="https://github.com/kyletscheer/numbers_game"
+              target="_blank"
+              >View Code</a
+            >
+          </button>
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
