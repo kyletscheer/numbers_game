@@ -1,6 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8" />
+
     <style>
       .content {
         padding: 100px;
@@ -112,7 +115,6 @@
               </div>
             </div>
           </form>
-
           <div class="row justify-content-center mt-2">
             <div class="col-lg-6 col-md-8">
               <button
@@ -120,6 +122,15 @@
                 class="btn btn-secondary btn-lg w-100"
               >
                 Get New Equation
+              </button>
+            </div>
+          </div>
+          <div class="row justify-content-center mt-2">
+            <div class="col-lg-6 col-md-8">
+              <button id="showAnswerButton" class="btn btn-danger btn-lg w-100">
+                <a id="answerLink" href="" target="_blank" rel="noopener"
+                  >Show Answer</a
+                >
               </button>
             </div>
           </div>
@@ -132,7 +143,9 @@
       <div class="container">
         <p class="m-0 text-center text-white">
           &copy;
-          <a href="http://www.kylescheer.com" target="_blank">Kyle Scheer</a>
+          <a href="http://www.kylescheer.com" target="_blank" rel="noopener"
+            >Kyle Scheer</a
+          >
           <button
             type="button"
             class="btn btn-outline-primary"
@@ -141,6 +154,7 @@
             <a
               href="https://github.com/kyletscheer/numbers_game"
               target="_blank"
+              rel="noopener"
               >View Code</a
             >
           </button>

@@ -3,6 +3,8 @@ var equations = [];
 var answer = 0;
 var equationString;
 var result = "";
+var randomNumber;
+const answerLink = document.getElementById('answerLink');
 // Function to generate a new equation
 function generateEquation() {
   var difficulty = document.getElementById("difficulty").value;
@@ -36,12 +38,15 @@ function generateEquation() {
 
       // Select a random number from the filtered array
       const randomIndex = Math.floor(Math.random() * numbers.length);
-      const randomNumber = numbers[randomIndex];
-
+      randomNumber = numbers[randomIndex];
+		console.log("randomNumber - " + randomNumber);
       // Perform actions with the randomly selected number
       const number = Math.floor(randomNumber / 10);
       answer = randomNumber % 10;
-
+		
+		// Update the href attribute of answerLink
+      answerLink.href = `singlenumber.html?number=${randomNumber}`;
+	
       // Create the equation string
       equationString = number + " = " + answer;
 
@@ -113,7 +118,6 @@ function checkEquation() {
   // Show the result
   document.getElementById("result").style.display = "block";
 }
-
 // Event listeners for the buttons
 document.getElementById("startButton").addEventListener("click", function () {
   generateEquation();
@@ -130,7 +134,6 @@ document
     document.getElementById("result").style.display = "none";
     generateEquation();
   });
-
 function validateForm() {
   event.preventDefault(); // Prevent default form submission
   var selectElement = document.querySelector(".mySelect");

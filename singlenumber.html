@@ -1,5 +1,9 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8" />
+
     <title>Single Number - Equation Checker</title>
     <style>
       table {
@@ -33,7 +37,112 @@
     <script src="https://cdn.datatables.net/buttons/2.4.0/js/dataTables.buttons.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.4.0/js/buttons.bootstrap5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.4.0/js/buttons.html5.min.js"></script>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">The Numbers Game</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarResponsive"
+          aria-controls="navbarResponsive"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown1"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+                >Find Numbers</a
+              >
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                <a class="dropdown-item" href="singlenumber.html"
+                  >Single Number</a
+                >
+                <a class="dropdown-item" href="singlegoal.html"
+                  >Single Number with Goal</a
+                >
+                <a class="dropdown-item" href="manynumbers.html"
+                  >Many Numbers</a
+                >
+                <a class="dropdown-item" href="manygoal.html"
+                  >Many Numbers with Goals</a
+                >
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="game.html">Numbers Game</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="content">
+      <h1>Single Number Equation Checker</h1>
+      <form id="equationForm">
+        <label for="number">Put number here:</label>
+        <input type="number" id="number" name="number" />
+        <input type="submit" value="Check" class="btn btn-primary" />
+      </form>
+      <p>Number of successes: <span id="successCount"></span></p>
+
+      <table id="numbertable" class="table table-striped">
+        <thead>
+          <tr>
+            <th>Equation</th>
+            <th>Result</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="equationTableBody"></tbody>
+      </table>
+    </div>
+    <footer class="bg-dark fixed-bottom p-2">
+      <div class="container">
+        <p class="m-0 text-center text-white">
+          &copy;
+          <a href="http://www.kylescheer.com" target="_blank" rel="noopener"
+            >Kyle Scheer</a
+          >
+          <button
+            type="button"
+            class="btn btn-outline-primary"
+            style="margin-left: 20px"
+          >
+            <a
+              href="https://github.com/kyletscheer/numbers_game"
+              target="_blank"
+              rel="noopener"
+              >View Code</a
+            >
+          </button>
+        </p>
+      </div>
+    </footer>
     <script>
+      let number = 0;
+      function checkURLParameter() {
+        const numberParam = new URLSearchParams(window.location.search).get(
+          "number"
+        );
+        if (numberParam !== null) {
+          console.log("Param Num: " + numberParam);
+          number = parseInt(numberParam);
+          checkEquation();
+        }
+      }
       function generateEquations(numbers) {
         const equations = [];
 
@@ -53,9 +162,15 @@
         generate(numbers.charAt(0), 0);
         return equations;
       }
-
+      // Attach an event listener to the form's submit event
+      document
+        .getElementById("equationForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevent the default form submission behavior
+          number = parseInt(document.getElementById("number").value); // Update number if the form is submitted
+          checkEquation(); // Run your checkEquation function
+        });
       function checkEquation() {
-        const number = parseInt(document.getElementById("number").value);
         const digit = number % 10;
         const numbers = Math.floor(number / 10).toString();
         const equations = generateEquations(numbers);
@@ -111,102 +226,9 @@
           order: [[2, "desc"]],
         });
       }
+      document.addEventListener("DOMContentLoaded", function () {
+        checkURLParameter();
+      });
     </script>
-  </head>
-  <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-      <div class="container">
-        <a class="navbar-brand" href="index.html">The Numbers Game</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarResponsive"
-          aria-controls="navbarResponsive"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="navbarDropdown1"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-                >Find Numbers</a
-              >
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-                <a class="dropdown-item" href="singlenumber.html"
-                  >Single Number</a
-                >
-                <a class="dropdown-item" href="singlegoal.html"
-                  >Single Number with Goal</a
-                >
-                <a class="dropdown-item" href="manynumbers.html"
-                  >Many Numbers</a
-                >
-                <a class="dropdown-item" href="manygoal.html"
-                  >Many Numbers with Goals</a
-                >
-              </div>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="game.html">Numbers Game</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    <div class="content">
-      <h1>Single Number Equation Checker</h1>
-      <form>
-        <label for="number">Put number here:</label>
-        <input type="number" id="number" name="number" />
-        <input
-          type="submit"
-          value="Check"
-          onclick="event.preventDefault(); checkEquation();"
-          class="btn btn-primary"
-        />
-      </form>
-      <p>Number of successes: <span id="successCount"></span></p>
-
-      <table id="numbertable" class="table table-striped">
-        <thead>
-          <tr>
-            <th>Equation</th>
-            <th>Result</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody id="equationTableBody"></tbody>
-      </table>
-    </div>
-    <footer class="bg-dark fixed-bottom p-2">
-      <div class="container">
-        <p class="m-0 text-center text-white">
-          &copy;
-          <a href="http://www.kylescheer.com" target="_blank">Kyle Scheer</a>
-          <button
-            type="button"
-            class="btn btn-outline-primary"
-            style="margin-left: 20px"
-          >
-            <a
-              href="https://github.com/kyletscheer/numbers_game"
-              target="_blank"
-              >View Code</a
-            >
-          </button>
-        </p>
-      </div>
-    </footer>
   </body>
 </html>
